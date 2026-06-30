@@ -1,0 +1,126 @@
+/*
+ * ============================================================
+ * HireGenius AI — Dashboard Styles
+ * ============================================================
+ */
+
+.dashboard-header {
+    margin-bottom: var(--space-8);
+}
+
+.dashboard-header h1 {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-1);
+}
+
+.dashboard-header .welcome-text {
+    color: var(--color-text-secondary);
+    font-size: var(--text-base);
+}
+
+/* KPI Grid */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-8);
+}
+
+/* Chart Cards */
+.chart-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border-light);
+}
+
+.chart-card .chart-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--color-primary);
+}
+
+.chart-card .chart-container {
+    position: relative;
+    height: 280px;
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+}
+
+.dashboard-grid-equal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid,
+    .dashboard-grid-equal {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Recent Activity */
+.activity-list {
+    list-style: none;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.activity-item:last-child { border-bottom: none; }
+
+.activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.activity-dot.new { background: var(--color-secondary); }
+.activity-dot.hired { background: var(--color-success); }
+.activity-dot.rejected { background: var(--color-danger); }
+.activity-dot.interview { background: var(--color-warning); }
+
+.activity-text {
+    font-size: var(--text-sm);
+    color: var(--color-text);
+}
+
+.activity-time {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+
+/* AI Insights */
+.insight-item {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+}
+
+.insight-item i {
+    color: var(--color-accent);
+    margin-top: 2px;
+    flex-shrink: 0;
+}

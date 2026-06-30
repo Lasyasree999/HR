@@ -1,0 +1,174 @@
+/*
+ * ============================================================
+ * HireGenius AI — Login Page Styles
+ * ============================================================
+ */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+}
+
+.login-left {
+    flex: 1;
+    background: linear-gradient(-45deg, #0F172A, #1E293B, #1D4ED8, #0F172A);
+    background-size: 400% 400%;
+    animation: gradientShift 12s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-12);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-left::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    border-radius: 50%;
+}
+
+.login-left::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+    bottom: -80px;
+    left: -80px;
+    border-radius: 50%;
+}
+
+.login-branding {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 480px;
+}
+
+.login-branding .brand-logo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto var(--space-6);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3);
+}
+
+.login-branding h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: var(--space-2);
+    letter-spacing: -0.03em;
+}
+
+.login-branding .tagline {
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,0.7);
+    margin-bottom: var(--space-8);
+    line-height: 1.6;
+}
+
+.login-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: left;
+}
+
+.login-features .feature {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.8);
+}
+
+.login-features .feature i {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+}
+
+.login-right {
+    width: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-12);
+    background: var(--color-surface);
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-form-container h2 {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-1);
+}
+
+.login-form-container .subtitle {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-8);
+}
+
+.login-form-container .form-group {
+    margin-bottom: var(--space-5);
+}
+
+.login-form-container .form-control {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-base);
+}
+
+.login-form-container .btn-primary {
+    width: 100%;
+    padding: var(--space-3);
+    font-size: var(--text-base);
+    margin-top: var(--space-4);
+}
+
+.login-form-container .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.login-form-container .form-options a {
+    font-size: var(--text-sm);
+}
+
+.login-error {
+    background: var(--color-danger-light);
+    color: var(--color-danger);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+    display: none;
+}
+
+.login-error.show { display: flex; align-items: center; gap: var(--space-2); }
+
+@media (max-width: 968px) {
+    .login-left { display: none; }
+    .login-right { width: 100%; }
+}

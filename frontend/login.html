@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HireGenius AI — Agentic Recruitment Intelligence Platform. Login to manage recruitment with AI-powered insights.">
+    <title>Login — HireGenius AI</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="login-page">
+        <!-- Left Panel — Branding -->
+        <div class="login-left">
+            <div class="login-branding animate-fade-in-up">
+                <div class="brand-logo">🧠</div>
+                <h1>HireGenius AI</h1>
+                <p class="tagline">Agentic Recruitment Intelligence Platform<br>Powered by Generative AI & Multi-Agent Systems</p>
+                <div class="login-features">
+                    <div class="feature"><i class="bi bi-check-circle-fill"></i> AI-Powered Resume Screening & Ranking</div>
+                    <div class="feature"><i class="bi bi-check-circle-fill"></i> Semantic Search with FAISS & LlamaIndex</div>
+                    <div class="feature"><i class="bi bi-check-circle-fill"></i> Automated Interview Question Generation</div>
+                    <div class="feature"><i class="bi bi-check-circle-fill"></i> Intelligent Hiring Recommendations</div>
+                    <div class="feature"><i class="bi bi-check-circle-fill"></i> RAG-Based Policy Assistant</div>
+                    <div class="feature"><i class="bi bi-check-circle-fill"></i> Executive Recruitment Analytics</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel — Login Form -->
+        <div class="login-right">
+            <div class="login-form-container animate-fade-in">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Sign in to access your recruitment dashboard</p>
+
+                <div class="login-error" id="loginError">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <span id="loginErrorText"></span>
+                </div>
+
+                <form id="loginForm" autocomplete="on">
+                    <div class="form-group">
+                        <label class="form-label" for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               placeholder="Enter your username" required autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Enter your password" required autocomplete="current-password">
+                    </div>
+                    <div class="form-options">
+                        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                            <input type="checkbox" id="rememberMe"> Remember me
+                        </label>
+                        <a href="#" onclick="return false;">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-ripple" id="loginBtn">
+                        <i class="bi bi-box-arrow-in-right"></i> Sign In
+                    </button>
+                </form>
+
+                <p style="text-align:center;margin-top:2rem;font-size:var(--text-xs);color:var(--color-text-muted);">
+                    Default credentials: <strong>admin</strong> / <strong>admin123</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script>
+        // Redirect if already logged in
+        if (Auth.isAuthenticated()) {
+            window.location.href = '/dashboard';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const errorDiv = document.getElementById('loginError');
+            const errorText = document.getElementById('loginErrorText');
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spinner" style="width:18px;height:18px;border-width:2px;"></span> Signing in...';
+            errorDiv.classList.remove('show');
+
+            try {
+                await Auth.login(username, password);
+                window.location.href = '/dashboard';
+            } catch (error) {
+                errorText.textContent = error.message;
+                errorDiv.classList.add('show');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-box-arrow-in-right"></i> Sign In';
+            }
+        });
+    </script>
+</body>
+</html>

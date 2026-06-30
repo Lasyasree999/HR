@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Management — HireGenius AI</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/animations.css">
+</head><body>
+<div class="app-layout"><div class="main-content"><div class="page-content page-enter">
+    <div class="flex items-center justify-between mb-6">
+        <h2>Job Management</h2>
+        <button class="btn btn-primary btn-ripple" onclick="openCreateJobModal()"><i class="bi bi-plus-lg"></i> Create Job</button>
+    </div>
+    <div id="jobsContent"><div class="skeleton skeleton-card" style="height:200px;"></div></div>
+</div></div></div>
+
+<!-- Create Job Modal -->
+<div class="modal-overlay" id="jobModal">
+<div class="modal" style="max-width:720px;">
+    <div class="modal-header"><h3>Create New Job</h3><button class="btn-ghost" onclick="closeJobModal()"><i class="bi bi-x-lg"></i></button></div>
+    <div class="modal-body">
+        <form id="createJobForm" onsubmit="createJob(event)">
+            <div class="grid-2" style="gap:var(--space-4);">
+                <div class="form-group"><label class="form-label">Job Title *</label><input class="form-control" id="jobTitle" required placeholder="e.g. Senior Data Engineer"></div>
+                <div class="form-group"><label class="form-label">Department</label><input class="form-control" id="jobDepartment" placeholder="e.g. Engineering"></div>
+            </div>
+            <div class="form-group"><label class="form-label">Job Description *</label>
+                <div class="flex gap-2 mb-2"><button type="button" class="btn btn-secondary btn-sm" onclick="generateAIDescription()"><i class="bi bi-stars"></i> AI Generate</button></div>
+                <textarea class="form-control" id="jobDescription" rows="6" required placeholder="Describe the role, responsibilities..."></textarea></div>
+            <div class="grid-2" style="gap:var(--space-4);">
+                <div class="form-group"><label class="form-label">Required Skills</label><input class="form-control" id="jobSkills" placeholder="Python, AWS, SQL..."></div>
+                <div class="form-group"><label class="form-label">Experience</label><input class="form-control" id="jobExperience" placeholder="3-5 years"></div>
+            </div>
+            <div class="grid-2" style="gap:var(--space-4);">
+                <div class="form-group"><label class="form-label">Salary Range</label><input class="form-control" id="jobSalary" placeholder="₹8,00,000 - ₹15,00,000"></div>
+                <div class="form-group"><label class="form-label">Location</label><input class="form-control" id="jobLocation" placeholder="Remote / New York"></div>
+            </div>
+            <div class="modal-footer" style="padding:var(--space-4) 0 0;border:none;">
+                <button type="button" class="btn btn-secondary" onclick="closeJobModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary btn-ripple"><i class="bi bi-check-lg"></i> Create Job</button>
+            </div>
+        </form>
+    </div>
+</div></div>
+
+<script src="/js/api.js"></script><script src="/js/auth.js"></script><script src="/js/app.js"></script><script src="/js/jobs.js"></script>
+</body></html>

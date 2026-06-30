@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Automation — HireGenius AI</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/animations.css">
+</head><body>
+<div class="app-layout"><div class="main-content"><div class="page-content page-enter">
+    <h2 class="mb-6">Email Automation</h2>
+    <div class="grid" style="grid-template-columns:1fr 2fr;gap:var(--space-6);">
+        <div class="card">
+            <h4 class="mb-4">Generate Email</h4>
+            <form onsubmit="generateEmail(event)">
+                <div class="form-group"><label class="form-label">Candidate</label><select class="form-control" id="emailCandidate" required><option value="">Loading...</option></select></div>
+                <div class="form-group"><label class="form-label">Email Type</label><select class="form-control" id="emailType" required>
+                    <option value="">Select type...</option><option value="interview_invite">Interview Invitation</option>
+                    <option value="offer">Offer Letter</option><option value="rejection">Rejection Email</option>
+                    <option value="followup">Follow-Up</option><option value="reminder">Reminder</option>
+                </select></div>
+                <div class="form-group"><label class="form-label">Additional Context</label><textarea class="form-control" id="emailContext" rows="3" placeholder="Any specific details..."></textarea></div>
+                <button type="submit" class="btn btn-primary w-full btn-ripple"><i class="bi bi-stars"></i> Generate Email</button>
+            </form>
+        </div>
+        <div id="emailsList"><div class="skeleton skeleton-card" style="height:200px;"></div></div>
+    </div>
+</div></div></div>
+<script src="/js/api.js"></script><script src="/js/auth.js"></script><script src="/js/app.js"></script><script src="/js/emails.js"></script>
+</body></html>
